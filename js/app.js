@@ -586,3 +586,16 @@ window.addEventListener('load', () => {
 
     modal.show();
 }, false);
+
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Get 'name' from URL
+const name = getQueryParam("name");
+
+// If name exists, update the HTML
+if (name) {
+    document.getElementById("guest-name").textContent = name;
+}
