@@ -1,3 +1,4 @@
+
 const audio = (() => {
     var instance = undefined;
 
@@ -107,464 +108,464 @@ const play = (btn) => {
     }
 };
 
-const resetForm = () => {
-    document.getElementById('kirim').style.display = 'block';
-    document.getElementById('hadiran').style.display = 'block';
-    document.getElementById('labelhadir').style.display = 'block';
-    document.getElementById('batal').style.display = 'none';
-    document.getElementById('kirimbalasan').style.display = 'none';
-    document.getElementById('idbalasan').value = null;
-    document.getElementById('balasan').innerHTML = null;
-    document.getElementById('formnama').value = null;
-    document.getElementById('hadiran').value = 0;
-    document.getElementById('formpesan').value = null;
-};
+// const resetForm = () => {
+//     document.getElementById('kirim').style.display = 'block';
+//     document.getElementById('hadiran').style.display = 'block';
+//     document.getElementById('labelhadir').style.display = 'block';
+//     document.getElementById('batal').style.display = 'none';
+//     document.getElementById('kirimbalasan').style.display = 'none';
+//     document.getElementById('idbalasan').value = null;
+//     document.getElementById('balasan').innerHTML = null;
+//     document.getElementById('formnama').value = null;
+//     document.getElementById('hadiran').value = 0;
+//     document.getElementById('formpesan').value = null;
+// };
 
-const balasan = async (button) => {
-    button.disabled = true;
-    let tmp = button.innerText;
-    button.innerText = 'Loading...';
+// const balasan = async (button) => {
+//     button.disabled = true;
+//     let tmp = button.innerText;
+//     button.innerText = 'Loading...';
 
-    let id = button.getAttribute('data-uuid').toString();
-    let token = localStorage.getItem('token') ?? '';
+//     let id = button.getAttribute('data-uuid').toString();
+//     let token = localStorage.getItem('token') ?? '';
 
-    if (token.length == 0) {
-        alert('Terdapat kesalahan, token kosong !');
-        window.location.reload();
-        return;
-    }
+//     if (token.length == 0) {
+//         alert('Terdapat kesalahan, token kosong !');
+//         window.location.reload();
+//         return;
+//     }
 
-    const BALAS = document.getElementById('balasan');
-    BALAS.innerHTML = renderLoading(1);
-    document.getElementById('hadiran').style.display = 'none';
-    document.getElementById('labelhadir').style.display = 'none';
+//     const BALAS = document.getElementById('balasan');
+//     BALAS.innerHTML = renderLoading(1);
+//     document.getElementById('hadiran').style.display = 'none';
+//     document.getElementById('labelhadir').style.display = 'none';
 
-    const REQ = {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        }
-    };
+//     const REQ = {
+//         method: 'GET',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer ' + token
+//         }
+//     };
 
-    await fetch(document.querySelector('body').getAttribute('data-url') + '/api/comment/' + id, REQ)
-        .then((res) => res.json())
-        .then((res) => {
-            if (res.code == 200) {
-                document.getElementById('kirim').style.display = 'none';
-                document.getElementById('batal').style.display = 'block';
-                document.getElementById('kirimbalasan').style.display = 'block';
-                document.getElementById('idbalasan').value = id;
+//     await fetch(document.querySelector('body').getAttribute('data-url') + '/api/comment/' + id, REQ)
+//         .then((res) => res.json())
+//         .then((res) => {
+//             if (res.code == 200) {
+//                 document.getElementById('kirim').style.display = 'none';
+//                 document.getElementById('batal').style.display = 'block';
+//                 document.getElementById('kirimbalasan').style.display = 'block';
+//                 document.getElementById('idbalasan').value = id;
 
-                BALAS.innerHTML = `
-                <div class="card-body bg-light shadow p-3 my-2 rounded-4">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center">
-                        <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                            <strong>${escapeHtml(res.data.nama)}</strong>
-                        </p>
-                        <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${res.data.created_at}</small>
-                    </div>
-                    <hr class="text-dark my-1">
-                    <p class="text-dark m-0 p-0" style="white-space: pre-line">${escapeHtml(res.data.komentar)}</p>
-                </div>`;
-            }
+//                 BALAS.innerHTML = `
+//                 <div class="card-body bg-light shadow p-3 my-2 rounded-4">
+//                     <div class="d-flex flex-wrap justify-content-between align-items-center">
+//                         <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
+//                             <strong>${escapeHtml(res.data.nama)}</strong>
+//                         </p>
+//                         <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${res.data.created_at}</small>
+//                     </div>
+//                     <hr class="text-dark my-1">
+//                     <p class="text-dark m-0 p-0" style="white-space: pre-line">${escapeHtml(res.data.komentar)}</p>
+//                 </div>`;
+//             }
 
-            if (res.error.length != 0) {
-                if (res.error[0] == 'Expired token') {
-                    alert('Terdapat kesalahan, token expired !');
-                    window.location.reload();
-                    return;
-                }
+//             if (res.error.length != 0) {
+//                 if (res.error[0] == 'Expired token') {
+//                     alert('Terdapat kesalahan, token expired !');
+//                     window.location.reload();
+//                     return;
+//                 }
 
-                alert(res.error[0]);
-            }
-        })
-        .catch((err) => {
-            resetForm();
-            alert(err);
-        });
+//                 alert(res.error[0]);
+//             }
+//         })
+//         .catch((err) => {
+//             resetForm();
+//             alert(err);
+//         });
 
-    document.getElementById('ucapan').scrollIntoView({ behavior: 'smooth' });
-    button.disabled = false;
-    button.innerText = tmp;
-};
+//     document.getElementById('ucapan').scrollIntoView({ behavior: 'smooth' });
+//     button.disabled = false;
+//     button.innerText = tmp;
+// };
 
-const kirimBalasan = async () => {
-    let nama = document.getElementById('formnama').value;
-    let komentar = document.getElementById('formpesan').value;
-    let token = localStorage.getItem('token') ?? '';
-    let id = document.getElementById('idbalasan').value;
+// const kirimBalasan = async () => {
+//     let nama = document.getElementById('formnama').value;
+//     let komentar = document.getElementById('formpesan').value;
+//     let token = localStorage.getItem('token') ?? '';
+//     let id = document.getElementById('idbalasan').value;
 
-    if (token.length == 0) {
-        alert('Terdapat kesalahan, token kosong !');
-        window.location.reload();
-        return;
-    }
+//     if (token.length == 0) {
+//         alert('Terdapat kesalahan, token kosong !');
+//         window.location.reload();
+//         return;
+//     }
 
-    if (nama.length == 0) {
-        alert('nama tidak boleh kosong');
-        return;
-    }
+//     if (nama.length == 0) {
+//         alert('nama tidak boleh kosong');
+//         return;
+//     }
 
-    if (nama.length >= 35) {
-        alert('panjangan nama maksimal 35');
-        return;
-    }
+//     if (nama.length >= 35) {
+//         alert('panjangan nama maksimal 35');
+//         return;
+//     }
 
-    if (komentar.length == 0) {
-        alert('pesan tidak boleh kosong');
-        return;
-    }
+//     if (komentar.length == 0) {
+//         alert('pesan tidak boleh kosong');
+//         return;
+//     }
 
-    document.getElementById('batal').disabled = true;
-    document.getElementById('kirimbalasan').disabled = true;
-    let tmp = document.getElementById('kirimbalasan').innerHTML;
-    document.getElementById('kirimbalasan').innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span>Loading...`;
+//     document.getElementById('batal').disabled = true;
+//     document.getElementById('kirimbalasan').disabled = true;
+//     let tmp = document.getElementById('kirimbalasan').innerHTML;
+//     document.getElementById('kirimbalasan').innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span>Loading...`;
 
-    const REQ = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        },
-        body: JSON.stringify({
-            nama: nama,
-            id: id,
-            komentar: komentar
-        })
-    };
+//     const REQ = {
+//         method: 'POST',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer ' + token
+//         },
+//         body: JSON.stringify({
+//             nama: nama,
+//             id: id,
+//             komentar: komentar
+//         })
+//     };
 
-    let isSuccess = false;
+//     let isSuccess = false;
 
-    await fetch(document.querySelector('body').getAttribute('data-url') + '/api/comment', REQ)
-        .then((res) => res.json())
-        .then((res) => {
-            if (res.code == 201) {
-                isSuccess = true;
-            }
+//     await fetch(document.querySelector('body').getAttribute('data-url') + '/api/comment', REQ)
+//         .then((res) => res.json())
+//         .then((res) => {
+//             if (res.code == 201) {
+//                 isSuccess = true;
+//             }
 
-            if (res.error.length != 0) {
-                if (res.error[0] == 'Expired token') {
-                    alert('Terdapat kesalahan, token expired !');
-                    window.location.reload();
-                    return;
-                }
+//             if (res.error.length != 0) {
+//                 if (res.error[0] == 'Expired token') {
+//                     alert('Terdapat kesalahan, token expired !');
+//                     window.location.reload();
+//                     return;
+//                 }
 
-                alert(res.error[0]);
-            }
-        })
-        .catch((err) => {
-            resetForm();
-            alert(err);
-        });
+//                 alert(res.error[0]);
+//             }
+//         })
+//         .catch((err) => {
+//             resetForm();
+//             alert(err);
+//         });
 
-    if (isSuccess) {
-        await ucapan();
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        resetForm();
-    }
+//     if (isSuccess) {
+//         await ucapan();
+//         document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+//         resetForm();
+//     }
 
-    document.getElementById('batal').disabled = false;
-    document.getElementById('kirimbalasan').disabled = false;
-    document.getElementById('kirimbalasan').innerHTML = tmp;
-};
+//     document.getElementById('batal').disabled = false;
+//     document.getElementById('kirimbalasan').disabled = false;
+//     document.getElementById('kirimbalasan').innerHTML = tmp;
+// };
 
-const innerCard = (comment) => {
-    let result = '';
+// const innerCard = (comment) => {
+//     let result = '';
 
-    comment.forEach((data) => {
-        result += `
-        <div class="card-body border-start bg-light py-2 ps-2 pe-0 my-2 ms-2 me-0" id="${data.uuid}">
-            <div class="d-flex flex-wrap justify-content-between align-items-center">
-                <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                    <strong>${escapeHtml(data.nama)}</strong>
-                </p>
-                <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${data.created_at}</small>
-            </div>
-            <hr class="text-dark my-1">
-            <p class="text-dark mt-0 mb-1 mx-0 p-0" style="white-space: pre-line">${escapeHtml(data.komentar)}</p>
-            <button style="font-size: 0.8rem;" onclick="balasan(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-4 py-0">Balas</button>
-            ${innerCard(data.comment)}
-        </div>`;
-    });
+//     comment.forEach((data) => {
+//         result += `
+//         <div class="card-body border-start bg-light py-2 ps-2 pe-0 my-2 ms-2 me-0" id="${data.uuid}">
+//             <div class="d-flex flex-wrap justify-content-between align-items-center">
+//                 <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
+//                     <strong>${escapeHtml(data.nama)}</strong>
+//                 </p>
+//                 <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${data.created_at}</small>
+//             </div>
+//             <hr class="text-dark my-1">
+//             <p class="text-dark mt-0 mb-1 mx-0 p-0" style="white-space: pre-line">${escapeHtml(data.komentar)}</p>
+//             <button style="font-size: 0.8rem;" onclick="balasan(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-4 py-0">Balas</button>
+//             ${innerCard(data.comment)}
+//         </div>`;
+//     });
 
-    return result;
-};
+//     return result;
+// };
 
-const renderCard = (data) => {
-    const DIV = document.createElement('div');
-    DIV.classList.add('mb-3');
-    DIV.innerHTML = `
-    <div class="card-body bg-light shadow p-3 m-0 rounded-4" id="${data.uuid}">
-        <div class="d-flex flex-wrap justify-content-between align-items-center">
-            <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
-                <strong class="me-1">${escapeHtml(data.nama)}</strong>${data.hadir ? '<i class="fa-solid fa-circle-check text-success"></i>' : '<i class="fa-solid fa-circle-xmark text-danger"></i>'}
-            </p>
-            <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${data.created_at}</small>
-        </div>
-        <hr class="text-dark my-1">
-        <p class="text-dark mt-0 mb-1 mx-0 p-0" style="white-space: pre-line">${escapeHtml(data.komentar)}</p>
-        <button style="font-size: 0.8rem;" onclick="balasan(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-4 py-0">Balas</button>
-        ${innerCard(data.comment)}
-    </div>`;
-    return DIV;
-};
+// const renderCard = (data) => {
+//     const DIV = document.createElement('div');
+//     DIV.classList.add('mb-3');
+//     DIV.innerHTML = `
+//     <div class="card-body bg-light shadow p-3 m-0 rounded-4" id="${data.uuid}">
+//         <div class="d-flex flex-wrap justify-content-between align-items-center">
+//             <p class="text-dark text-truncate m-0 p-0" style="font-size: 0.95rem;">
+//                 <strong class="me-1">${escapeHtml(data.nama)}</strong>${data.hadir ? '<i class="fa-solid fa-circle-check text-success"></i>' : '<i class="fa-solid fa-circle-xmark text-danger"></i>'}
+//             </p>
+//             <small class="text-dark m-0 p-0" style="font-size: 0.75rem;">${data.created_at}</small>
+//         </div>
+//         <hr class="text-dark my-1">
+//         <p class="text-dark mt-0 mb-1 mx-0 p-0" style="white-space: pre-line">${escapeHtml(data.komentar)}</p>
+//         <button style="font-size: 0.8rem;" onclick="balasan(this)" data-uuid="${data.uuid}" class="btn btn-sm btn-outline-dark rounded-4 py-0">Balas</button>
+//         ${innerCard(data.comment)}
+//     </div>`;
+//     return DIV;
+// };
 
-const renderLoading = (num) => {
-    let hasil = '';
-    for (let index = 0; index < num; index++) {
-        hasil += `
-        <div class="mb-3">
-            <div class="card-body bg-light shadow p-3 m-0 rounded-4">
-                <div class="d-flex flex-wrap justify-content-between align-items-center placeholder-glow">
-                    <span class="placeholder bg-secondary col-5"></span>
-                    <span class="placeholder bg-secondary col-3"></span>
-                </div>
-                <hr class="text-dark my-1">
-                <p class="card-text placeholder-glow">
-                    <span class="placeholder bg-secondary col-6"></span>
-                    <span class="placeholder bg-secondary col-5"></span>
-                    <span class="placeholder bg-secondary col-12"></span>
-                </p>
-            </div>
-        </div>`;
-    }
+// const renderLoading = (num) => {
+//     let hasil = '';
+//     for (let index = 0; index < num; index++) {
+//         hasil += `
+//         <div class="mb-3">
+//             <div class="card-body bg-light shadow p-3 m-0 rounded-4">
+//                 <div class="d-flex flex-wrap justify-content-between align-items-center placeholder-glow">
+//                     <span class="placeholder bg-secondary col-5"></span>
+//                     <span class="placeholder bg-secondary col-3"></span>
+//                 </div>
+//                 <hr class="text-dark my-1">
+//                 <p class="card-text placeholder-glow">
+//                     <span class="placeholder bg-secondary col-6"></span>
+//                     <span class="placeholder bg-secondary col-5"></span>
+//                     <span class="placeholder bg-secondary col-12"></span>
+//                 </p>
+//             </div>
+//         </div>`;
+//     }
 
-    return hasil;
-}
+//     return hasil;
+// }
 
-const pagination = (() => {
+// const pagination = (() => {
 
-    const perPage = 10;
-    var pageNow = 0;
-    var resultData = 0;
+//     const perPage = 10;
+//     var pageNow = 0;
+//     var resultData = 0;
 
-    var disabledPrevious = () => {
-        document.getElementById('previous').classList.add('disabled');
-    };
+//     var disabledPrevious = () => {
+//         document.getElementById('previous').classList.add('disabled');
+//     };
 
-    var disabledNext = () => {
-        document.getElementById('next').classList.add('disabled');
-    };
+//     var disabledNext = () => {
+//         document.getElementById('next').classList.add('disabled');
+//     };
 
-    var buttonAction = async (button) => {
-        let tmp = button.innerHTML;
-        button.disabled = true;
-        button.innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span>Loading...`;
-        await ucapan();
-        button.disabled = false;
-        button.innerHTML = tmp;
-        document.getElementById('daftarucapan').scrollIntoView({ behavior: 'smooth' });
-    };
+//     var buttonAction = async (button) => {
+//         let tmp = button.innerHTML;
+//         button.disabled = true;
+//         button.innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span>Loading...`;
+//         await ucapan();
+//         button.disabled = false;
+//         button.innerHTML = tmp;
+//         document.getElementById('daftarucapan').scrollIntoView({ behavior: 'smooth' });
+//     };
 
-    return {
-        getPer: () => {
-            return perPage;
-        },
-        getNext: () => {
-            return pageNow;
-        },
-        reset: async () => {
-            pageNow = 0;
-            resultData = 0;
-            await ucapan();
-            document.getElementById('next').classList.remove('disabled');
-            disabledPrevious();
-        },
-        setResultData: (len) => {
-            resultData = len;
-            if (resultData < perPage) {
-                disabledNext();
-            }
-        },
-        previous: async (button) => {
-            if (pageNow < 0) {
-                disabledPrevious();
-            } else {
-                pageNow -= perPage;
-                disabledNext();
-                await buttonAction(button);
-                document.getElementById('next').classList.remove('disabled');
-                if (pageNow <= 0) {
-                    disabledPrevious();
-                }
-            }
-        },
-        next: async (button) => {
-            if (resultData < perPage) {
-                disabledNext();
-            } else {
-                pageNow += perPage;
-                disabledPrevious();
-                await buttonAction(button);
-                document.getElementById('previous').classList.remove('disabled');
-            }
-        }
-    };
-})();
+//     return {
+//         getPer: () => {
+//             return perPage;
+//         },
+//         getNext: () => {
+//             return pageNow;
+//         },
+//         reset: async () => {
+//             pageNow = 0;
+//             resultData = 0;
+//             await ucapan();
+//             document.getElementById('next').classList.remove('disabled');
+//             disabledPrevious();
+//         },
+//         setResultData: (len) => {
+//             resultData = len;
+//             if (resultData < perPage) {
+//                 disabledNext();
+//             }
+//         },
+//         previous: async (button) => {
+//             if (pageNow < 0) {
+//                 disabledPrevious();
+//             } else {
+//                 pageNow -= perPage;
+//                 disabledNext();
+//                 await buttonAction(button);
+//                 document.getElementById('next').classList.remove('disabled');
+//                 if (pageNow <= 0) {
+//                     disabledPrevious();
+//                 }
+//             }
+//         },
+//         next: async (button) => {
+//             if (resultData < perPage) {
+//                 disabledNext();
+//             } else {
+//                 pageNow += perPage;
+//                 disabledPrevious();
+//                 await buttonAction(button);
+//                 document.getElementById('previous').classList.remove('disabled');
+//             }
+//         }
+//     };
+// })();
 
-const ucapan = async () => {
-    const UCAPAN = document.getElementById('daftarucapan');
-    UCAPAN.innerHTML = renderLoading(pagination.getPer());
-    let token = localStorage.getItem('token') ?? '';
+// const ucapan = async () => {
+//     const UCAPAN = document.getElementById('daftarucapan');
+//     UCAPAN.innerHTML = renderLoading(pagination.getPer());
+//     let token = localStorage.getItem('token') ?? '';
 
-    if (token.length == 0) {
-        alert('Terdapat kesalahan, token kosong !');
-        window.location.reload();
-        return;
-    }
+//     if (token.length == 0) {
+//         alert('Terdapat kesalahan, token kosong !');
+//         window.location.reload();
+//         return;
+//     }
 
-    const REQ = {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        }
-    };
+//     const REQ = {
+//         method: 'GET',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer ' + token
+//         }
+//     };
 
-    await fetch(document.querySelector('body').getAttribute('data-url') + `/api/comment?per=${pagination.getPer()}&next=${pagination.getNext()}`, REQ)
-        .then((res) => res.json())
-        .then((res) => {
-            if (res.code == 200) {
-                UCAPAN.innerHTML = null;
-                res.data.forEach((data) => UCAPAN.appendChild(renderCard(data)));
-                pagination.setResultData(res.data.length);
+//     await fetch(document.querySelector('body').getAttribute('data-url') + `/api/comment?per=${pagination.getPer()}&next=${pagination.getNext()}`, REQ)
+//         .then((res) => res.json())
+//         .then((res) => {
+//             if (res.code == 200) {
+//                 UCAPAN.innerHTML = null;
+//                 res.data.forEach((data) => UCAPAN.appendChild(renderCard(data)));
+//                 pagination.setResultData(res.data.length);
 
-                if (res.data.length == 0) {
-                    UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
-                }
-            }
+//                 if (res.data.length == 0) {
+//                     UCAPAN.innerHTML = `<div class="h6 text-center">Tidak ada data</div>`;
+//                 }
+//             }
 
-            if (res.error.length != 0) {
-                if (res.error[0] == 'Expired token') {
-                    alert('Terdapat kesalahan, token expired !');
-                    window.location.reload();
-                    return;
-                }
+//             if (res.error.length != 0) {
+//                 if (res.error[0] == 'Expired token') {
+//                     alert('Terdapat kesalahan, token expired !');
+//                     window.location.reload();
+//                     return;
+//                 }
 
-                alert(res.error[0]);
-            }
-        })
-        .catch((err) => alert(err));
-};
+//                 alert(res.error[0]);
+//             }
+//         })
+//         .catch((err) => alert(err));
+// };
 
-const login = async () => {
-    document.getElementById('daftarucapan').innerHTML = renderLoading(pagination.getPer());
-    let body = document.querySelector('body');
+// const login = async () => {
+//     document.getElementById('daftarucapan').innerHTML = renderLoading(pagination.getPer());
+//     let body = document.querySelector('body');
 
-    const REQ = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            email: body.getAttribute('data-email').toString(),
-            password: body.getAttribute('data-password').toString()
-        })
-    };
+//     const REQ = {
+//         method: 'POST',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             email: body.getAttribute('data-email').toString(),
+//             password: body.getAttribute('data-password').toString()
+//         })
+//     };
 
-    await fetch(body.getAttribute('data-url') + '/api/login', REQ)
-        .then((res) => res.json())
-        .then((res) => {
-            if (res.code == 200) {
-                localStorage.removeItem('token');
-                localStorage.setItem('token', res.data.token);
-                ucapan();
-            }
+//     await fetch(body.getAttribute('data-url') + '/api/login', REQ)
+//         .then((res) => res.json())
+//         .then((res) => {
+//             if (res.code == 200) {
+//                 localStorage.removeItem('token');
+//                 localStorage.setItem('token', res.data.token);
+//                 ucapan();
+//             }
 
-            if (res.error.length != 0) {
-                alert('Terdapat kesalahan, ' + res.error[0]);
-                window.location.reload();
-                return;
-            }
-        })
-        .catch(() => {
-            alert('Terdapat kesalahan, otomatis reload halaman');
-            window.location.reload();
-            return;
-        });
-};
+//             if (res.error.length != 0) {
+//                 alert('Terdapat kesalahan, ' + res.error[0]);
+//                 window.location.reload();
+//                 return;
+//             }
+//         })
+//         .catch(() => {
+//             alert('Terdapat kesalahan, otomatis reload halaman');
+//             window.location.reload();
+//             return;
+//         });
+// };
 
-const kirim = async () => {
-    let nama = document.getElementById('formnama').value;
-    let hadir = document.getElementById('hadiran').value;
-    let komentar = document.getElementById('formpesan').value;
-    let token = localStorage.getItem('token') ?? '';
+// const kirim = async () => {
+//     let nama = document.getElementById('formnama').value;
+//     let hadir = document.getElementById('hadiran').value;
+//     let komentar = document.getElementById('formpesan').value;
+//     let token = localStorage.getItem('token') ?? '';
 
-    if (token.length == 0) {
-        alert('Terdapat kesalahan, token kosong !');
-        window.location.reload();
-        return;
-    }
+//     if (token.length == 0) {
+//         alert('Terdapat kesalahan, token kosong !');
+//         window.location.reload();
+//         return;
+//     }
 
-    if (nama.length == 0) {
-        alert('nama tidak boleh kosong');
-        return;
-    }
+//     if (nama.length == 0) {
+//         alert('nama tidak boleh kosong');
+//         return;
+//     }
 
-    if (nama.length >= 35) {
-        alert('panjangan nama maksimal 35');
-        return;
-    }
+//     if (nama.length >= 35) {
+//         alert('panjangan nama maksimal 35');
+//         return;
+//     }
 
-    if (hadir == 0) {
-        alert('silahkan pilih kehadiran');
-        return;
-    }
+//     if (hadir == 0) {
+//         alert('silahkan pilih kehadiran');
+//         return;
+//     }
 
-    if (komentar.length == 0) {
-        alert('pesan tidak boleh kosong');
-        return;
-    }
+//     if (komentar.length == 0) {
+//         alert('pesan tidak boleh kosong');
+//         return;
+//     }
 
-    document.getElementById('kirim').disabled = true;
-    let tmp = document.getElementById('kirim').innerHTML;
-    document.getElementById('kirim').innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span>Loading...`;
+//     document.getElementById('kirim').disabled = true;
+//     let tmp = document.getElementById('kirim').innerHTML;
+//     document.getElementById('kirim').innerHTML = `<span class="spinner-border spinner-border-sm me-1"></span>Loading...`;
 
-    const REQ = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        },
-        body: JSON.stringify({
-            nama: nama,
-            hadir: hadir == 1,
-            komentar: komentar
-        })
-    };
+//     const REQ = {
+//         method: 'POST',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer ' + token
+//         },
+//         body: JSON.stringify({
+//             nama: nama,
+//             hadir: hadir == 1,
+//             komentar: komentar
+//         })
+//     };
 
-    await fetch(document.querySelector('body').getAttribute('data-url') + '/api/comment', REQ)
-        .then((res) => res.json())
-        .then((res) => {
-            if (res.code == 201) {
-                resetForm();
-                pagination.reset();
-            }
+//     await fetch(document.querySelector('body').getAttribute('data-url') + '/api/comment', REQ)
+//         .then((res) => res.json())
+//         .then((res) => {
+//             if (res.code == 201) {
+//                 resetForm();
+//                 pagination.reset();
+//             }
 
-            if (res.error.length != 0) {
-                if (res.error[0] == 'Expired token') {
-                    alert('Terdapat kesalahan, token expired !');
-                    window.location.reload();
-                    return;
-                }
+//             if (res.error.length != 0) {
+//                 if (res.error[0] == 'Expired token') {
+//                     alert('Terdapat kesalahan, token expired !');
+//                     window.location.reload();
+//                     return;
+//                 }
 
-                alert(res.error[0]);
-            }
-        })
-        .catch((err) => {
-            resetForm();
-            alert(err);
-        });
+//                 alert(res.error[0]);
+//             }
+//         })
+//         .catch((err) => {
+//             resetForm();
+//             alert(err);
+//         });
 
-    document.getElementById('kirim').disabled = false;
-    document.getElementById('kirim').innerHTML = tmp;
-};
+//     document.getElementById('kirim').disabled = false;
+//     document.getElementById('kirim').innerHTML = tmp;
+// };
 
 window.addEventListener('load', () => {
     let modal = new bootstrap.Modal('#exampleModal');
@@ -598,4 +599,28 @@ const name = getQueryParam("name");
 // If name exists, update the HTML
 if (name) {
     document.getElementById("guest-name").textContent = name;
+}
+
+function salin2(button) {
+    const accountNumber = button.getAttribute('data-nomer');
+    const bankName = button.getAttribute('data-bank');
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(accountNumber).then(() => {
+        // Show toast notification
+        const toast = new bootstrap.Toast(document.getElementById('copyToast'));
+        document.querySelector('.toast-body').textContent = `${bankName} account number copied to clipboard!`;
+        toast.show();
+        
+        // Button feedback
+        button.innerHTML = `<i class="fas fa-check me-2"></i>Copied!`;
+        button.classList.add('btn-success');
+        setTimeout(() => {
+            button.innerHTML = `<i class="far fa-copy me-2"></i>Salin No. Rekening`;
+            button.classList.remove('btn-success');
+            if (bankName === 'BCA') button.classList.add('btn-primary');
+            if (bankName === 'INA') button.classList.add('btn-danger');
+            if (bankName === 'ShopeePay') button.classList.add('btn-warning');
+        }, 2000);
+    });
 }

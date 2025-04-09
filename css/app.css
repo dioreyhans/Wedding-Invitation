@@ -69,6 +69,10 @@ h4{
     z-index: 1055;
 }
 
+.btn-cream {
+    background-color: #cab394 !important;
+}
+
 .loading {
     position: fixed;
     top: 0;
@@ -81,7 +85,6 @@ h4{
 
 .card-body {
     overflow-wrap: break-word !important;
-<<<<<<< HEAD
 }
 
 .center-screen-text{
@@ -90,6 +93,19 @@ h4{
     left: 55%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-=======
->>>>>>> origin/main
+}
+
+.gift-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+.gift-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+.bank-logo img {
+    transition: transform 0.3s ease;
+}
+.gift-card:hover .bank-logo img {
+    transform: scale(1.1);
 }
