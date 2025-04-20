@@ -173,19 +173,29 @@
                     <div class="overflow-x-hidden">
                         <div class="py-2" data-aos="fade-left" data-aos-duration="1500">
                             <h1 class="font-estetik-putih" style="font-size: 2rem;">Akad</h1>
-                            <p>Pukul 07.00 WIB - Selesai <br/> RM Kaliurang <br/>Jl. Kaliurang No.44, Lowokwaru, Malang</p>
+                            <p>Pukul 06.00 WIB - Selesai <br/> D'Fresh Guest House and Resto <br/>Jl. C.Trowulan No.12, Mojolangu, Kec. Lowokwaru, Kota Malang</p>
                         </div>
 
                         <div class="py-2" data-aos="fade-right" data-aos-duration="1500">
                             <h1 class="font-estetik-putih" style="font-size: 2rem;">Resepsi</h1>
-                            <p>Pukul 10.00 WIB - 13.00 WIB <br/> RM Kaliurang <br/>Jl. Kaliurang No.44, Lowokwaru, Malang</p>
+                            <p>Pukul <span id="waktu-resepsi"></span> <br/> D'Fresh Guest House and Resto <br/>Jl. C.Trowulan No.12, Mojolangu, Kec. Lowokwaru, Kota Malang</p>
                         </div>
                     </div>
 
                     <div class="py-2" data-aos="fade-up" data-aos-duration="1500">
-                        <a href="https://goo.gl/maps/oHqgLZBkqrC15JnU6" target="_blank" class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
+                        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;" class="my-3">
+                            <iframe 
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.572153323655!2d112.633534!3d-7.939672099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629c2772f4645%3A0x8addcdc4a9b52f9d!2sD&#39;Fresh%20Guest%20House%20and%20Resto!5e0!3m2!1sid!2sid!4v1745105057896!5m2!1sid!2sid" 
+                              style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" 
+                              allowfullscreen="" 
+                              loading="lazy" 
+                              referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <a href="https://maps.app.goo.gl/RKnnfH5LZTZZnWSq5" target="_blank" class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
                             <i class="fa-solid fa-map-location-dot me-2"></i>Lihat Google Maps
                         </a>
+                          
                     </div>
                 </div>
             </div>
@@ -248,9 +258,9 @@
                             <div class="card border-0 shadow rounded-4 p-4" style="background: linear-gradient(145deg, #fff8f2, #fdfcfb);">
                                 <img src="assets/images/logoBCA.png" class="img-fluid mx-auto d-block mb-3" width="120" alt="bni">
                                 <p class="text-muted mb-1">No. Rekening (BCA)</p>
-                                <p class="fw-semibold text-dark mb-1">-</p>
+                                <p class="fw-semibold text-dark mb-1">0110954921</p>
                                 <p class="text-dark mb-3">a.n Sindy Devi Ratnasari</p>
-                                <button class="btn btn-outline-dark btn-sm rounded-pill px-4 transition" data-nomer="-" onclick="salin(this)">
+                                <button class="btn btn-outline-dark btn-sm rounded-pill px-4 transition" data-nomer="0110954921" onclick="salin(this)">
                                     Salin No. Rekening
                                 </button>
                             </div>
@@ -261,9 +271,9 @@
                             <div class="card border-0 shadow rounded-4 p-4" style="background: linear-gradient(145deg, #fff8f2, #fdfcfb);">
                                 <img src="assets/images/logoINA.png" class="img-fluid mx-auto d-block mb-4" width="120" alt="ina">
                                 <p class="text-muted mb-1">No. Rekening (INA)</p>
-                                <p class="fw-semibold text-dark mb-1">-</p>
+                                <p class="fw-semibold text-dark mb-1">1001801787</p>
                                 <p class="text-dark mb-3">a.n Muhammad Dio Reyhans</p>
-                                <button class="btn btn-outline-dark btn-sm rounded-pill px-4 transition" data-nomer="-" onclick="salin(this)">
+                                <button class="btn btn-outline-dark btn-sm rounded-pill px-4 transition" data-nomer="1001801787" onclick="salin(this)">
                                     Salin No. Rekening
                                 </button>
                             </div>
@@ -326,20 +336,20 @@
                         </button>
                     </div>
                 </div>
-
+        
                 <div class="rounded-4 mt-4 mb-2">
                     <div id="daftarucapan"></div>
                 </div>
-
+        
                 <nav class="d-flex justify-content-center">
                     <ul class="pagination mb-0">
                         <li class="page-item disabled" id="previous">
-                            <button class="page-link" onclick="pagination.previous(this)" aria-label="Previous">
+                            <button class="page-link" onclick="pagination.previous()" aria-label="Previous">
                                 <i class="fa-solid fa-circle-left me-1"></i>Sebelumnya
                             </button>
                         </li>
                         <li class="page-item" id="next">
-                            <button class="page-link" onclick="pagination.next(this)" aria-label="Next">
+                            <button class="page-link" onclick="pagination.next()" aria-label="Next">
                                 Selanjutnya<i class="fa-solid fa-circle-right ms-1"></i>
                             </button>
                         </li>
@@ -406,6 +416,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha256-6o/gIaSs5PZ4b+zEGPcLZY/C3ALRNuj+XGq2tipG1dA=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha256-pQBbLkFHcP1cy0C8IhoSdxlm0CtcH5yJ2ki9jjgR03c=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="js/app.js"></script>
     <script src="js/pesan.js"></script>
 </body>

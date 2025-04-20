@@ -595,10 +595,21 @@ function getQueryParam(param) {
 
 // Get 'name' from URL
 const name = getQueryParam("name");
+const tipe = getQueryParam("tipe");
 
 // If name exists, update the HTML
 if (name) {
     document.getElementById("guest-name").textContent = name;
+}
+
+if (tipe) {
+    if (tipe == '1') {
+        document.getElementById("waktu-resepsi").textContent = "07.00 WIB - 08.30 WIB";
+    } else if (tipe == '2') {
+        document.getElementById("waktu-resepsi").textContent = "08.30 WIB - 10.30 WIB";
+    } else {
+        document.getElementById("waktu-resepsi").textContent = "10.30 WIB - 11.00 WIB";
+    }
 }
 
 function salin2(button) {
@@ -624,3 +635,18 @@ function salin2(button) {
         }, 2000);
     });
 }
+
+// Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyDYbGzia_jWPsUw-0l_vsnnw3NZHPFUy0k",
+    authDomain: "weddinginvitation-52765.firebaseapp.com",
+    databaseURL: "https://weddinginvitation-52765-default-rtdb.firebaseio.com",
+    projectId: "weddinginvitation-52765",
+    storageBucket: "weddinginvitation-52765.appspot.com",
+    messagingSenderId: "525945854045",
+    appId: "1:525945854045:web:375cd78bf5fee5d9bad5b4"
+  };
+  
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();

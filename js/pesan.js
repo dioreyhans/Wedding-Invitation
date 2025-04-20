@@ -18,7 +18,7 @@ const pagination = {
 };
 
 // Fungsi untuk mengirim ucapan baru
-function kirim() {
+async function kirim() {
     const nama = document.getElementById('formnama').value.trim();
     const hadiran = document.getElementById('hadiran').value;
     const pesan = document.getElementById('formpesan').value.trim();
@@ -41,7 +41,6 @@ function kirim() {
     
     // Buat objek ucapan baru
     const ucapan = {
-        id: Date.now(),
         nama: nama,
         hadiran: hadiran,
         pesan: pesan,
@@ -51,75 +50,104 @@ function kirim() {
             year: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
-        })
+        }),
+        timestamp: firebase.database.ServerValue.TIMESTAMP
     };
     
-    // Simpan ke array
-    ucapanData.unshift(ucapan); // Tambahkan di awal array
-    
-    // Reset form
-    document.getElementById('formnama').value = '';
-    document.getElementById('hadiran').value = '0';
-    document.getElementById('formpesan').value = '';
-    
-    // Simpan ke localStorage
-    localStorage.setItem('ucapanData', JSON.stringify(ucapanData));
-    
-    // Tampilkan ucapan
-    currentPage = 1;
-    displayUcapan();
-    
-    alert('Terima kasih atas ucapan dan doanya!');
+    try {
+        // Kirim ke Firebase
+        const newUcapanRef = database.ref('ucapan').push();
+        await newUcapanRef.set(ucapan);
+        
+        // Reset form
+        document.getElementById('formnama').value = '';
+        document.getElementById('hadiran').value = '0';
+        document.getElementById('formpesan').value = '';
+        
+        alert('Terima kasih atas ucapan dan doanya!');
+        
+        // Refresh tampilan ucapan
+        currentPage = 1;
+        displayUcapan();
+    } catch (error) {
+        console.error("Error menyimpan ucapan:", error);
+        alert('Terjadi kesalahan saat mengirim ucapan');
+    }
 }
 
 // Fungsi untuk menampilkan ucapan
 function displayUcapan() {
-    // Ambil data dari localStorage jika ada
-    const savedData = localStorage.getItem('ucapanData');
-    if (savedData) {
-        ucapanData = JSON.parse(savedData);
-    }
-    
     const daftarucapan = document.getElementById('daftarucapan');
-    daftarucapan.innerHTML = '';
+    daftarucapan.innerHTML = '<div class="text-center py-3">Memuat ucapan...</div>';
     
-    // Hitung total halaman
-    const totalPages = Math.ceil(ucapanData.length / itemsPerPage);
-    
-    // Update status pagination
-    document.getElementById('previous').classList.toggle('disabled', currentPage === 1);
-    document.getElementById('next').classList.toggle('disabled', currentPage === totalPages || ucapanData.length === 0);
-    
-    // Potong data untuk halaman saat ini
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentUcapan = ucapanData.slice(startIndex, endIndex);
-    
-    if (currentUcapan.length === 0) {
-        daftarucapan.innerHTML = '<div class="text-center py-3">Belum ada ucapan</div>';
-        return;
-    }
-    
-    // Buat elemen untuk setiap ucapan
-    currentUcapan.forEach(ucapan => {
-        const ucapanElement = document.createElement('div');
-        ucapanElement.className = 'card border-0 shadow-sm mb-3';
-        ucapanElement.innerHTML = `
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h5 class="card-title mb-0">${ucapan.nama}</h5>
-                    <small class="text-muted">${ucapan.tanggal}</small>
-                </div>
-                <div class="d-flex align-items-center mb-2">
-                    <span class="badge ${ucapan.hadiran === '1' ? 'bg-success' : 'bg-secondary'} me-2">
-                        ${ucapan.hadiran === '1' ? 'Hadir' : 'Berhalangan'}
-                    </span>
-                </div>
-                <p class="card-text">${ucapan.pesan}</p>
-            </div>
-        `;
-        daftarucapan.appendChild(ucapanElement);
-    });
+    // Ambil data dari Firebase
+    database.ref('ucapan').orderByChild('timestamp').once('value')
+        .then((snapshot) => {
+            const allUcapan = [];
+            snapshot.forEach((childSnapshot) => {
+                const ucapan = childSnapshot.val();
+                ucapan.id = childSnapshot.key; // Tambahkan ID dari Firebase
+                allUcapan.unshift(ucapan); // Masukkan di awal array untuk urutan terbaru pertama
+            });
+            
+            // Update ucapanData untuk pagination
+            ucapanData = allUcapan;
+            
+            // Hitung total halaman
+            const totalPages = Math.ceil(ucapanData.length / itemsPerPage);
+            
+            // Update status pagination
+            document.getElementById('previous').classList.toggle('disabled', currentPage === 1);
+            document.getElementById('next').classList.toggle('disabled', currentPage === totalPages || ucapanData.length === 0);
+            
+            // Potong data untuk halaman saat ini
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const currentUcapan = ucapanData.slice(startIndex, endIndex);
+            
+            if (currentUcapan.length === 0) {
+                daftarucapan.innerHTML = '<div class="text-center py-3">Belum ada ucapan</div>';
+                return;
+            }
+            
+            // Kosongkan daftar ucapan
+            daftarucapan.innerHTML = '';
+            
+            // Buat elemen untuk setiap ucapan
+            currentUcapan.forEach(ucapan => {
+                const ucapanElement = document.createElement('div');
+                ucapanElement.className = 'card border-0 shadow-sm mb-3';
+                ucapanElement.innerHTML = `
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">${ucapan.nama}</h5>
+                            <small class="text-muted">${ucapan.tanggal}</small>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge ${ucapan.hadiran === '1' ? 'bg-success' : 'bg-secondary'} me-2">
+                                ${ucapan.hadiran === '1' ? 'Hadir' : 'Berhalangan'}
+                            </span>
+                        </div>
+                        <p class="card-text">${ucapan.pesan}</p>
+                    </div>
+                `;
+                daftarucapan.appendChild(ucapanElement);
+            });
+        })
+        .catch((error) => {
+            console.error("Error mengambil data ucapan:", error);
+            daftarucapan.innerHTML = '<div class="text-center py-3 text-danger">Gagal memuat ucapan</div>';
+        });
+}
+
+function resetForm() {
+    document.getElementById('formnama').value = '';
+    document.getElementById('hadiran').value = '0';
+    document.getElementById('formpesan').value = '';
+    document.getElementById('idbalasan').value = '';
+    document.getElementById('batal').style.display = 'none';
+    document.getElementById('kirimbalasan').style.display = 'none';
+    document.getElementById('kirim').style.display = 'block';
 }
 
 // Inisialisasi saat halaman dimuat
