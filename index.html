@@ -144,7 +144,7 @@
             <div class="container">
                 <div class="text-center">
                     <h1 class="font-estetik-putih py-3" style="font-size: 2rem;">Waktu Menuju Acara</h1>
-                    <h5>Minggu, 25 Mei 2025</h5><br>
+                    <h5 id="tanggal-acara">Minggu, 25 Mei 2025</h5><br>
                     <div class="border rounded-pill shadow py-2 px-4 mx-2 mb-4">
                         <div class="row justify-content-center" data-waktu="2025-05-25 07:00:00" id="tampilan-waktu">
                             <div class="col-3 p-1">
@@ -167,10 +167,10 @@
 
                     <p style="font-size: 0.9rem;" class="mt-4 py-2">
                         Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, insyaAllah kami akan menyelenggarakan
-                        acara :
+                        <span id="acara">acara</span> :
                     </p>
 
-                    <div class="overflow-x-hidden">
+                    <div class="overflow-x-hidden" id="waktu-acara">
                         <div class="py-2" data-aos="fade-left" data-aos-duration="1500">
                             <h1 class="font-estetik-putih" style="font-size: 2rem;">Akad</h1>
                             <p>Pukul 06.00 WIB - Selesai <br/> D'Fresh Guest House and Resto <br/>Jl. C.Trowulan No.12, Mojolangu, Kec. Lowokwaru, Kota Malang</p>
@@ -181,8 +181,14 @@
                             <p>Pukul <span id="waktu-resepsi"></span> <br/> D'Fresh Guest House and Resto <br/>Jl. C.Trowulan No.12, Mojolangu, Kec. Lowokwaru, Kota Malang</p>
                         </div>
                     </div>
+                    <div class="overflow-x-hidden" id="waktu-unduh" hidden>
+                        <div class="py-2" data-aos="fade-right" data-aos-duration="1500">
+                            <h1 class="font-estetik-putih" style="font-size: 2rem;">Lokasi Acara</h1>
+                            <p>Pukul <span id="waktu-unduh">08.30 WIB - 10.30 WIB</span> <br/>Jl. Danau Toba E1 No.23, Lesanpuro, Kec. Kedungkandang, Kota Malang</p>
+                        </div>
+                    </div>
 
-                    <div class="py-2" data-aos="fade-up" data-aos-duration="1500">
+                    <div class="py-2" data-aos="fade-up" data-aos-duration="1500" id="lokasi-acara">
                         <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;" class="my-3">
                             <iframe 
                               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.572153323655!2d112.633534!3d-7.939672099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629c2772f4645%3A0x8addcdc4a9b52f9d!2sD&#39;Fresh%20Guest%20House%20and%20Resto!5e0!3m2!1sid!2sid!4v1745105057896!5m2!1sid!2sid" 
@@ -195,12 +201,20 @@
                         <a href="https://maps.app.goo.gl/RKnnfH5LZTZZnWSq5" target="_blank" class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
                             <i class="fa-solid fa-map-location-dot me-2"></i>Lihat Google Maps
                         </a>
-                          
+                    </div>
+                    <div class="py-2" data-aos="fade-up" data-aos-duration="1500" id="lokasi-unduh" hidden>
+                        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;" class="my-3">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d246.94879507842805!2d112.65754186266909!3d-7.980263608195827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6285d799b8f0b%3A0x594e0005a96a9f96!2sAntariksa%20Putra!5e0!3m2!1sen!2sid!4v1745667354127!5m2!1sen!2sid" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <a href="https://maps.app.goo.gl/aNvnrYgKByFSvC7U8" target="_blank" class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
+                            <i class="fa-solid fa-map-location-dot me-2"></i>Lihat Google Maps
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Love Story -->
         <section class="py-3" style="background-color: #212023; background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 56 28\' width=\'56\' height=\'28\'%3E%3Cpath fill=\'%23000000\' fill-opacity=\'0.4\' d=\'M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z\'%3E%3C/path%3E%3C/svg%3E'); margin-top: -5px; margin-bottom: -5px;" id="galeri">
             <div class="container pb-2 pt-4">
                 <div class="card-body border rounded-4 shadow p-3">
@@ -247,6 +261,7 @@
             </div>
         </section>
 
+        <!-- Love Gift -->
         <div class="container">
             <div class="py-4">
                 <div class="text-center">
@@ -279,24 +294,12 @@
                             </div>
                         </div>
 
-                        <!-- Kartu 3: ShopeePay -->
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card border-0 shadow rounded-4 p-4" style="background: linear-gradient(145deg, #fff8f2, #fdfcfb);">
-                                <img src="assets/images/logoShopee.png" class="img-fluid mx-auto d-block mb-3" width="120" alt="shopeepay">
-                                <p class="text-muted mb-1">No. Rekening (ShopeePay)</p>
-                                <p class="fw-semibold text-dark mb-1">-</p>
-                                <p class="text-dark mb-3">a.n Sindy Devi Ratnasari</p>
-                                <button class="btn btn-outline-dark btn-sm rounded-pill px-4 transition" data-nomer="-" onclick="salin(this)">
-                                    Salin No. Rekening
-                                </button>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Ucapan dan Doa -->
         <section class="py-5" style="background-color: #212023; background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 56 28\' width=\'56\' height=\'28\'%3E%3Cpath fill=\'%23000000\' fill-opacity=\'0.4\' d=\'M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z\'%3E%3C/path%3E%3C/svg%3E'); margin-top: -5px;" id="ucapan">
             <div class="container">
                 <div class="card-body border rounded-4 shadow p-3">
@@ -317,6 +320,10 @@
                             <option value="1">Hadir</option>
                             <option value="2">Berhalangan</option>
                         </select>
+                    </div>
+                    <div class="mb-3" id="jumlah_container">
+                        <label for="jumlah_orang" class="form-label text-dark">Jumlah Orang yang Hadir</label>
+                        <input type="number" class="form-control shadow-sm" id="jumlah_orang" min="1" placeholder="Jumlah orang yang datang">
                     </div>
                     <div class="mb-3">
                         <label for="formpesan" class="form-label text-dark">Ucapan & Doa</label>

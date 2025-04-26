@@ -21,6 +21,7 @@ const pagination = {
 async function kirim() {
     const nama = document.getElementById('formnama').value.trim();
     const hadiran = document.getElementById('hadiran').value;
+    const jumlahOrang  = document.getElementById('jumlah_orang').value;
     const pesan = document.getElementById('formpesan').value.trim();
     
     // Validasi form
@@ -33,6 +34,11 @@ async function kirim() {
         alert('Silakan konfirmasi kehadiran Anda');
         return;
     }
+
+    if (hadiran === '1' && (jumlahOrang === '' || parseInt(jumlahOrang) < 1)) {
+        alert('Silakan isi jumlah orang yang akan hadir');
+        return;
+    }
     
     if (!pesan) {
         alert('Silakan tulis ucapan dan doa Anda');
@@ -43,6 +49,7 @@ async function kirim() {
     const ucapan = {
         nama: nama,
         hadiran: hadiran,
+        jumlahOrang: jumlahOrang,
         pesan: pesan,
         tanggal: new Date().toLocaleDateString('id-ID', {
             day: 'numeric',
@@ -143,6 +150,7 @@ function displayUcapan() {
 function resetForm() {
     document.getElementById('formnama').value = '';
     document.getElementById('hadiran').value = '0';
+    document.getElementById('jumlah_orang').value = '';
     document.getElementById('formpesan').value = '';
     document.getElementById('idbalasan').value = '';
     document.getElementById('batal').style.display = 'none';
@@ -152,6 +160,23 @@ function resetForm() {
 
 // Inisialisasi saat halaman dimuat
 document.addEventListener('DOMContentLoaded', function() {
+        var totalGuest = 0;
+        // To get the count of messages
+        database.ref('ucapan').once('value')
+        .then((snapshot) => {
+        
+        // You can also iterate through the messages if needed
+        snapshot.forEach((childSnapshot) => {
+            const ucapan = childSnapshot.val();
+            totalGuest +=  Number(ucapan.jumlahOrang);
+        });
+        console.log(totalGuest);
+        })
+        
+        .catch((error) => {
+        console.error("Error getting data:", error);
+        });
+
     displayUcapan();
     
     // Sembunyikan tombol balasan yang tidak digunakan
