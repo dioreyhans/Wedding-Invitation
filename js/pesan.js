@@ -168,11 +168,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // You can also iterate through the messages if needed
         snapshot.forEach((childSnapshot) => {
             const ucapan = childSnapshot.val();
-            totalGuest +=  Number(ucapan.jumlahOrang);
+            if (ucapan.hadiran === '1') {
+                totalGuest +=  Number(ucapan.jumlahOrang);
+            }
         });
         console.log(totalGuest);
         })
-        
+
         .catch((error) => {
         console.error("Error getting data:", error);
         });

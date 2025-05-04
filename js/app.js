@@ -188,13 +188,13 @@ function salin2(button) {
 
 // Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDYbGzia_jWPsUw-0l_vsnnw3NZHPFUy0k",
-    authDomain: "weddinginvitation-52765.firebaseapp.com",
-    databaseURL: "https://weddinginvitation-52765-default-rtdb.firebaseio.com",
-    projectId: "weddinginvitation-52765",
-    storageBucket: "weddinginvitation-52765.appspot.com",
-    messagingSenderId: "525945854045",
-    appId: "1:525945854045:web:375cd78bf5fee5d9bad5b4"
+    apiKey: "AIzaSyD0b4_h2-oEEqCHuFKJcG6dxM2c22OJq54",
+    authDomain: "guestdatabase-af507.firebaseapp.com",
+    databaseURL: "https://guestdatabase-af507-default-rtdb.firebaseio.com",
+    projectId: "guestdatabase-af507",
+    storageBucket: "guestdatabase-af507.firebasestorage.app",
+    messagingSenderId: "650264164755",
+    appId: "1:650264164755:web:ad8e54f24b4b030eaad066"
   };
   
   // Initialize Firebase
