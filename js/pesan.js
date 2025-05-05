@@ -113,8 +113,13 @@ function displayUcapan() {
             const currentUcapan = ucapanData.slice(startIndex, endIndex);
             
             if (currentUcapan.length === 0) {
-                daftarucapan.innerHTML = '<div class="text-center py-3">Belum ada ucapan</div>';
+                daftarucapan.innerHTML = '<div class="text-center py-3"></div>';
+                document.getElementById('previous').hidden = true;
+                document.getElementById('next').hidden = true;
                 return;
+            } else {
+                document.getElementById('previous').hidden = false;
+                document.getElementById('next').hidden = false;
             }
             
             // Kosongkan daftar ucapan
