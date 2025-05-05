@@ -146,9 +146,9 @@ if (name) {
 if (tipe) {
     if (tipe == '1') {
         document.getElementById("waktu-resepsi").textContent = "07.00 WIB - 08.30 WIB";
-    } else if (tipe == '2') {
+    } else if (tipe == '2' || tipe == '3') {
         document.getElementById("waktu-resepsi").textContent = "07.30 WIB - 9.30 WIB";
-    } else if (tipe == '3'){
+    } else if (tipe == '4'){
         const element = document.getElementById('tampilan-waktu');
         element.setAttribute('data-waktu', '2025-06-01 08:00:00');
 

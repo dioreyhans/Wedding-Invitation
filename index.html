@@ -80,20 +80,18 @@
 
     <main class="scrollspy-example text-light" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
 
-        <section class="container" id="home" style="height: 100vh !important; background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0)), url('assets/images/img3.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
-            <div class="center-screen-text">
+        <section class="container-fluid" id="home" style="height: 100vh; padding: 0; margin: 0; background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0)), url('assets/images/img3.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed;">
+            <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-center">
                     <h1 style="font-size: 2rem; color: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">The Wedding Of</h1>
                     <h2 class="font-estetik-putih mb-5" style="font-size: 2.2rem; color: #ffffff; text-shadow: 2px 2px 5px rgba(0,0,0,0.8);">Sindy & Dio</h2>
             
                     <h4 class="text-white fw-bold">Minggu, <br/> 25 Mei 2025</h4>
-            
                 </div>
-                
             </div>
         </section>
 
-        <section class="py-3" style="background-color: #212023; background-image: url('assets/images/rose-pattern.jpg'); margin-top: -5px; margin-bottom: -5px; background-size: 100px; background-repeat: repeat;" id="mempelai">
+       <section class="py-3" style="background-color: #212023; background-image: url('assets/images/rose-pattern.jpg'); margin-top: -5px; margin-bottom: -5px; background-size: cover; background-repeat: no-repeat; background-position: center;" id="mempelai">
             <div class="text-center" style="position: relative; z-index: 1;">
                 <h1 class="font-estetik-putih py-4 px-2">Assalamualaikum Warahmatullahi Wabarakatuh</h1>
                 <p class="pb-3 px-3" style="color: #ffffffdd;">
@@ -140,7 +138,8 @@
             </div>
         </div>
 
-        <section class="py-3" style="background-color: #212023; background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 56 28\' width=\'56\' height=\'28\'%3E%3Cpath fill=\'%23000000\' fill-opacity=\'0.4\' d=\'M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z\'%3E%3C/path%3E%3C/svg%3E'); margin-top: -5px; margin-bottom: -5px;" id="tanggal">
+        <!-- Waktu & Lokasi Acara -->
+        <section class="py-3" style="background-color: #212023; background-image: url('assets/images/rose-pattern.jpg'); margin-top: -5px; margin-bottom: -5px; background-size: cover; background-repeat: no-repeat; background-position: center;" id="tanggal">
             <div class="container">
                 <div class="text-center">
                     <h1 class="font-estetik-putih py-3" style="font-size: 2rem;">Waktu Menuju Acara</h1>
@@ -184,7 +183,7 @@
                     <div class="overflow-x-hidden" id="waktu-unduh" hidden>
                         <div class="py-2" data-aos="fade-right" data-aos-duration="1500">
                             <h1 class="font-estetik-putih" style="font-size: 2rem;">Lokasi Acara</h1>
-                            <p>Pukul <span id="waktu-unduh">08.30 WIB - 10.30 WIB</span> <br/>Jl. Danau Toba E1 No.23, Lesanpuro, Kec. Kedungkandang, Kota Malang</p>
+                            <p>Pukul <span id="waktu-unduh">16.30 WIB - 18.30 WIB</span> <br/>Jl. Danau Toba E1 No.23, Lesanpuro, Kec. Kedungkandang, Kota Malang <br> <small> *Lokasi parkir mobil di ruko</small></p>
                         </div>
                     </div>
 
@@ -214,8 +213,42 @@
             </div>
         </section>
 
+        <!-- Gallery -->
+        <section class="py-1" style="padding-left: 0 !important; padding-right: 0 !important;">
+            <!-- Remove container completely for true full width -->
+            <!-- Carousel Gambar -->
+            <div id="bgCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" style="max-height: 80vh;">  <!-- Added max-height for control -->
+                    <div class="carousel-item active">
+                        <img src="assets/images/img1.jpg" class="d-block w-100" style="object-fit: cover; width: 100%; height: 80vh;" alt="Background 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/images/img5.jpg" class="d-block w-100" style="object-fit: cover; width: 100%; height: 80vh;" alt="Background 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/images/img6.jpg" class="d-block w-100" style="object-fit: cover; width: 100%; height: 80vh;" alt="Background 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/images/img7.jpg" class="d-block w-100" style="object-fit: cover; width: 100%; height: 80vh;" alt="Background 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/images/img11.jpg" class="d-block w-100" style="object-fit: cover; width: 100%; height: 80vh;" alt="Background 3">
+                    </div>
+                </div>
+                <!-- Carousel controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#bgCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#bgCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+                    
         <!-- Love Story -->
-        <section class="py-3" style="background-color: #212023; background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 56 28\' width=\'56\' height=\'28\'%3E%3Cpath fill=\'%23000000\' fill-opacity=\'0.4\' d=\'M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z\'%3E%3C/path%3E%3C/svg%3E'); margin-top: -5px; margin-bottom: -5px;" id="galeri">
+        <section class="py-3" style="background-color: #212023; background-image: url('assets/images/rose-pattern.jpg'); margin-top: -5px; margin-bottom: -5px; background-size: cover; background-repeat: no-repeat; background-position: center;" id="galeri">
             <div class="container pb-2 pt-4">
                 <div class="card-body border rounded-4 shadow p-3">
                     <h1 class="font-estetik-putih text-center py-3" data-aos="fade-down" data-aos-duration="1500" style="font-size: 2rem;">Our Love Story</h1>
@@ -272,7 +305,7 @@
 
         <!-- Love Gift -->
         <div class="container">
-            <div class="py-4">
+            <div class="py-4 my-3">
                 <div class="text-center">
                     <h1 class="font-estetik mt-0 mb-3" style="font-size: 3rem; color: #5e4637;">Love Gift</h1>
                     <div class="row justify-content-center gy-4">
@@ -309,7 +342,7 @@
         </div>
 
         <!-- Ucapan dan Doa -->
-        <section class="py-5" style="background-color: #212023; background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 56 28\' width=\'56\' height=\'28\'%3E%3Cpath fill=\'%23000000\' fill-opacity=\'0.4\' d=\'M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z\'%3E%3C/path%3E%3C/svg%3E'); margin-top: -5px;" id="ucapan">
+        <section class="py-5" style="background-color: #212023; background-image: url('assets/images/rose-pattern.jpg'); margin-top: -5px; margin-bottom: -5px; background-size: cover; background-repeat: no-repeat; background-position: center;" id="ucapan">
             <div class="container">
                 <div class="card-body border rounded-4 shadow p-3">
                     <h1 class="font-estetik-putih text-center mb-3" style="font-size: 3rem;">Ucapan & Doa</h1>
@@ -375,17 +408,17 @@
         </section>
 
         <div style="background-color: #212023; background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 56 28\' width=\'56\' height=\'28\'%3E%3Cpath fill=\'%23000000\' fill-opacity=\'0.4\' d=\'M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z\'%3E%3C/path%3E%3C/svg%3E'); margin-top: -5px; padding-bottom: 4rem; height: 100vh !important; background-image: url('assets/images/img2.jpg') !important; background-repeat: no-repeat; background-size: cover; background-position: center;">
-            <div class="d-flex justify-content-center align-items-center" style="height: 100vh !important; background-image: url('assets/images/img2.jpg') !important; background-repeat: no-repeat; background-size: cover; background-position: center;">
+            <div class="d-flex justify-content-center align-items-center" style="height: 100vh !important; overflow: hidden;">
+                
+                <!-- Your content container -->
                 <div class="container">
                     <div class="text-center mt-5" style="background-color: rgba(0, 0, 0, 0.5); padding: 1.5rem; border-radius: 10px;">
                         <p style="font-size: 0.9rem; color: #ffffff; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);" class="pt-2 pb-1 px-2" data-aos="fade-up" data-aos-duration="1500">
-
                             Dengan penuh rasa hormat dan sukacita, kami mengundang <strong>Bapak/Ibu/Saudara/i</strong> untuk hadir 
                             dan turut memberikan doa restu bagi kami. <br>
                             Kehadiran dan doa restu dari Bapak/Ibu/Saudara/i merupakan kebahagiaan tersendiri bagi kami. 
                             <br>
                             Terima kasih atas perhatian dan kehadirannya.
-                              
                         </p>
                         <h4 class="font-estetik-putih" style="color: #ffffff; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);" data-aos="fade-up" data-aos-duration="2000">
                             Wassalamualaikum Warahmatullahi Wabarakatuh
@@ -394,6 +427,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
         
     </main>
@@ -432,6 +466,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha256-6o/gIaSs5PZ4b+zEGPcLZY/C3ALRNuj+XGq2tipG1dA=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" integrity="sha256-pQBbLkFHcP1cy0C8IhoSdxlm0CtcH5yJ2ki9jjgR03c=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="js/app.js"></script>

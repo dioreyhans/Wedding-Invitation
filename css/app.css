@@ -109,3 +109,14 @@ h4{
 .gift-card:hover .bank-logo img {
     transform: scale(1.1);
 }
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        font-size: 0.8rem;
+    }
+    .carousel-control-prev-icon, 
+    .carousel-control-next-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}

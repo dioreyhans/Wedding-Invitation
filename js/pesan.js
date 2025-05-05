@@ -160,7 +160,19 @@ function resetForm() {
 
 // Inisialisasi saat halaman dimuat
 document.addEventListener('DOMContentLoaded', function() {
+    var myCarousel = new bootstrap.Carousel(document.getElementById('bgCarousel'), {
+        interval: 5000,  // Slower transition on desktop
+        touch: true,    // Enable touch swiping
+        pause: "hover"  // Pause on hover (desktop only)
+    });
+    
+    // Adjust interval on mobile
+    if (window.innerWidth < 768) {
+        myCarousel._config.interval = 3000;
+    }
+
         var totalGuest = 0;
+
         // To get the count of messages
         database.ref('ucapan').once('value')
         .then((snapshot) => {
