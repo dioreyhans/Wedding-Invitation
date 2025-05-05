@@ -112,7 +112,7 @@ h4{
 
 @media (max-width: 768px) {
     #home {
-        background-attachment: fixed !important;
+        background-attachment: scroll !important;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
