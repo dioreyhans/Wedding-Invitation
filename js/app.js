@@ -150,9 +150,9 @@ if (tipe) {
         document.getElementById("waktu-resepsi").textContent = "07.30 WIB - 9.30 WIB";
     } else if (tipe == '4'){
         const element = document.getElementById('tampilan-waktu');
-        element.setAttribute('data-waktu', '2025-06-01 08:00:00');
+        element.setAttribute('data-waktu', '2025-06-13 08:00:00');
 
-        document.getElementById("tanggal-acara").textContent = "Minggu, 01 Juni 2025";
+        document.getElementById("tanggal-acara").textContent = "Jum'at, 13 Juni 2025";
         document.getElementById("acara").textContent = "Ngunduh Mantu";
         document.getElementById("waktu-acara").hidden = true;
         document.getElementById("waktu-unduh").hidden = false;
