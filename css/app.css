@@ -111,6 +111,14 @@ h4{
 }
 
 @media (max-width: 768px) {
+    #home {
+        background-attachment: fixed !important;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
     .carousel-caption {
         font-size: 0.8rem;
     }
@@ -120,3 +128,4 @@ h4{
         height: 1.5rem;
     }
 }
+
