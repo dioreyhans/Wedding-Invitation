@@ -159,6 +159,9 @@ if (tipe) {
 
         document.getElementById("lokasi-acara").hidden = true;
         document.getElementById("lokasi-unduh").hidden = false;
+
+        const dateHeading = document.querySelector('.text-white.fw-bold');
+        dateHeading.innerHTML = "Jum'at, <br/> 13 Juni 2025";
     }
 }
 
