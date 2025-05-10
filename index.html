@@ -336,17 +336,17 @@
 
         <!-- Ucapan dan Doa -->
         <section class="py-5" style="background-color: #212023; background-image: url('assets/images/rose-pattern.webp'); margin-top: -5px; margin-bottom: -5px; background-size: cover; background-repeat: no-repeat; background-position: center;" id="ucapan">
-            <div class="container">
+            <div class="container mb-3">
                 <div class="card-body border rounded-4 shadow p-3">
-                    <h1 class="font-estetik-putih text-center mb-3" style="font-size: 3rem;">Ucapan & Doa</h1>
+                    <h1 class="font-estetik-putih text-center mb-3" style="font-size: 3rem;">RSVP</h1>
                     <p class="text-white p-2 text-center">
-                        "Kami mengundang Anda untuk turut merayakan hari bahagia kami pada pernikahan kami. Kami akan sangat senang dan berterima kasih jika Anda dapat hadir untuk berbagi kebahagiaan bersama kami."
+                        Untuk membantu kami mempersiapkan acara dengan sebaik-baiknya, mohon kesediaan Anda untuk mengonfirmasi kehadiran melalui formulir RSVP berikut:  
                     </p>
                     <input type="hidden" id="idbalasan">
                     <div class="mb-1" id="balasan"></div>
                     <div class="mb-3">
                         <label for="formnama" class="form-label text-white">Nama</label>
-                        <input type="text" class="form-control shadow-sm" id="formnama" placeholder="Isikan Nama Anda">
+                        <input type="text" class="form-control shadow-sm" id="formnamahadiran" placeholder="Isikan Nama Anda">
                     </div>
                     <div class="mb-3">
                         <label for="hadiran" class="form-label text-white" id="labelhadir">Kehadiran</label>
@@ -359,6 +359,33 @@
                     <div class="mb-3" id="jumlah_container">
                         <label for="jumlah_orang" class="form-label text-white">Jumlah Tamu yang Datang</label>
                         <input type="number" class="form-control shadow-sm" id="jumlah_orang" min="1" max="2" placeholder="Jumlah tamu yang datang">
+                    </div>
+                    <div class="d-flex">
+                        <button class="flex-fill btn btn-danger btn-sm rounded-4 shadow m-1" style="display: none;" onclick="resetForm()" id="batal">
+                            Batal<i class="fa-solid fa-xmark ms-1"></i>
+                        </button>
+                        <button class="flex-fill btn btn-primary btn-sm rounded-4 shadow m-1" style="display: none;" onclick="kirimBalasan()" id="kirimbalasan">
+                            Kirim<i class="fa-solid fa-paper-plane ms-1"></i>
+                        </button>
+                    </div>
+                    <div class="d-grid mb-2">
+                        <button class="btn btn-primary btn-sm rounded-4 shadow" onclick="kirimKehadiran()" id="kirim">
+                            Kirim<i class="fa-solid fa-paper-plane ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="card-body border rounded-4 shadow p-3">
+                    <h1 class="font-estetik-putih text-center mb-3" style="font-size: 3rem;">Ucapan & Doa</h1>
+                    <p class="text-white p-2 text-center">
+                        "Kami mengundang Anda untuk turut merayakan hari bahagia kami pada pernikahan kami. Kami akan sangat senang dan berterima kasih jika Anda dapat hadir untuk berbagi kebahagiaan bersama kami."
+                    </p>
+                    <input type="hidden" id="idbalasan">
+                    <div class="mb-1" id="balasan"></div>
+                    <div class="mb-3">
+                        <label for="formnama" class="form-label text-white">Nama</label>
+                        <input type="text" class="form-control shadow-sm" id="formnama" placeholder="Isikan Nama Anda">
                     </div>
                     <div class="mb-3">
                         <label for="formpesan" class="form-label text-white">Ucapan & Doa</label>

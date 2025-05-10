@@ -34,9 +34,62 @@ const inputJumlah = document.getElementById("jumlah_orang");
 // Fungsi untuk mengirim ucapan baru
 async function kirim() {
     const nama = document.getElementById('formnama').value.trim();
+    const pesan = document.getElementById('formpesan').value.trim();
+    const urlParams = new URLSearchParams(window.location.search);
+    const tipe = urlParams.get('tipe');
+    const namaUndangan = urlParams.get('name');
+    
+    // Validasi form
+    if (!nama) {
+        alert('Silakan isi nama Anda');
+        return;
+    }
+    
+    if (!pesan) {
+        alert('Silakan tulis ucapan dan doa Anda');
+        return;
+    }
+    
+    // Buat objek ucapan baru
+    const ucapan = {
+        namaUndangan: namaUndangan,
+        nama: nama,
+        pesan: pesan,
+        tipe: tipe,
+        tanggal: new Date().toLocaleDateString('id-ID', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        }),
+        timestamp: firebase.database.ServerValue.TIMESTAMP
+    };
+    
+    try {
+        // Kirim ke Firebase
+        const newUcapanRef = database.ref('ucapan').push();
+        await newUcapanRef.set(ucapan);
+        
+        // Reset form
+        document.getElementById('formnama').value = '';
+        document.getElementById('formpesan').value = '';
+        
+        alert('Terima kasih atas ucapan dan doanya!');
+        
+        // Refresh tampilan ucapan
+        currentPage = 1;
+        displayUcapan();
+    } catch (error) {
+        console.error("Error menyimpan ucapan:", error);
+        alert('Terjadi kesalahan saat mengirim ucapan');
+    }
+}
+
+async function kirimKehadiran() {
+    const nama = document.getElementById('formnamahadiran').value.trim();
     const hadiran = document.getElementById('hadiran').value;
     const jumlahOrang  = document.getElementById('jumlah_orang').value;
-    const pesan = document.getElementById('formpesan').value.trim();
     const urlParams = new URLSearchParams(window.location.search);
     const tipe = urlParams.get('tipe');
     const namaUndangan = urlParams.get('name');
@@ -57,18 +110,12 @@ async function kirim() {
         return;
     }
     
-    if (!pesan) {
-        alert('Silakan tulis ucapan dan doa Anda');
-        return;
-    }
-    
     // Buat objek ucapan baru
-    const ucapan = {
+    const kehadiran = {
         namaUndangan: namaUndangan,
         nama: nama,
         hadiran: hadiran,
         jumlahOrang: jumlahOrang,
-        pesan: pesan,
         tipe: tipe,
         tanggal: new Date().toLocaleDateString('id-ID', {
             day: 'numeric',
@@ -82,22 +129,19 @@ async function kirim() {
     
     try {
         // Kirim ke Firebase
-        const newUcapanRef = database.ref('ucapan').push();
-        await newUcapanRef.set(ucapan);
+        const newUcapanRef = database.ref('kehadiran').push();
+        await newUcapanRef.set(kehadiran);
         
         // Reset form
-        document.getElementById('formnama').value = '';
+        document.getElementById('formnamahadiran').value = '';
         document.getElementById('hadiran').value = '0';
-        document.getElementById('formpesan').value = '';
         
-        alert('Terima kasih atas ucapan dan doanya!');
+        alert('Terima kasih atas konfirmasi kehadirannya!');
         
-        // Refresh tampilan ucapan
-        currentPage = 1;
-        displayUcapan();
+        
     } catch (error) {
         console.error("Error menyimpan ucapan:", error);
-        alert('Terjadi kesalahan saat mengirim ucapan');
+        alert('Terjadi kesalahan saat mengisi kehadiran');
     }
 }
 
@@ -152,10 +196,7 @@ function displayUcapan() {
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <div class="d-flex align-items-center">
-                            <h5 class="card-title mb-0 me-2">${ucapan.nama}</h5>
-                            <span class="${ucapan.hadiran === '1' ? 'text-success' : 'text-danger'}">
-                                <i class="bi ${ucapan.hadiran === '1' ? 'bi-check-circle-fill' : 'bi-x-circle-fill'}"></i>
-                            </span>
+                           <h5 class="card-title mb-0 me-2" style="color: maroon;">${ucapan.nama}</h5>
                         </div>
                         <small class="text-muted">${ucapan.tanggal}</small>
                     </div>
@@ -198,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var totalGuest = 0;
 
         // To get the count of messages
-        database.ref('ucapan').once('value')
+        database.ref('kehadiran').once('value')
         .then((snapshot) => {
         
         // You can also iterate through the messages if needed
