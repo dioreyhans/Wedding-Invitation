@@ -147,16 +147,16 @@ if (tipe) {
     if (tipe == '1') {
         document.getElementById("waktu-resepsi").textContent = "07.00 WIB - 08.30 WIB";
     } else if (tipe == '2' || tipe == '3') {
-        document.getElementById("waktu-resepsi").textContent = "07.30 WIB - 9.30 WIB";
+        document.getElementById("waktu-resepsi").textContent = "08.00 WIB - 9.30 WIB";
     } else if (tipe == '4' || tipe == '5') {
         
         const element = document.getElementById('tampilan-waktu');
         if(tipe == '4') {
             element.setAttribute('data-waktu', '2025-06-13 16:30:00');
-            document.getElementById("jam-unduh").textContent = "13.00 WIB - 15.30 WIB";
+            document.getElementById("jam-unduh").textContent = "16.30 WIB - 18.30 WIB";
         } else if(tipe == '5') {
             element.setAttribute('data-waktu', '2025-06-13 16:30:00');
-            document.getElementById("jam-unduh").textContent = "16.30 WIB - 18.30 WIB";
+            document.getElementById("jam-unduh").textContent = "12.30 WIB - 14.30 WIB";
         }
 
         document.getElementById("tanggal-acara").textContent = "Jum'at, 13 Juni 2025";

@@ -17,12 +17,29 @@ const pagination = {
     }
 };
 
+const inputJumlah = document.getElementById("jumlah_orang");
+
+  inputJumlah.addEventListener("input", function () {
+    const max = 2;
+    const min = 1;
+    let value = parseInt(this.value, 10);
+
+    if (value > max) {
+      this.value = max;
+    } else if (value < min) {
+      this.value = min;
+    }
+  });
+
 // Fungsi untuk mengirim ucapan baru
 async function kirim() {
     const nama = document.getElementById('formnama').value.trim();
     const hadiran = document.getElementById('hadiran').value;
     const jumlahOrang  = document.getElementById('jumlah_orang').value;
     const pesan = document.getElementById('formpesan').value.trim();
+    const urlParams = new URLSearchParams(window.location.search);
+    const tipe = urlParams.get('tipe');
+    const namaUndangan = urlParams.get('name');
     
     // Validasi form
     if (!nama) {
@@ -47,10 +64,12 @@ async function kirim() {
     
     // Buat objek ucapan baru
     const ucapan = {
+        namaUndangan: namaUndangan,
         nama: nama,
         hadiran: hadiran,
         jumlahOrang: jumlahOrang,
         pesan: pesan,
+        tipe: tipe,
         tanggal: new Date().toLocaleDateString('id-ID', {
             day: 'numeric',
             month: 'long',
@@ -130,19 +149,19 @@ function displayUcapan() {
                 const ucapanElement = document.createElement('div');
                 ucapanElement.className = 'card border-0 shadow-sm mb-3';
                 ucapanElement.innerHTML = `
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <h5 class="card-title mb-0">${ucapan.nama}</h5>
-                            <small class="text-muted">${ucapan.tanggal}</small>
-                        </div>
-                        <div class="d-flex align-items-center mb-2">
-                            <span class="badge ${ucapan.hadiran === '1' ? 'bg-success' : 'bg-secondary'} me-2">
-                                ${ucapan.hadiran === '1' ? 'Hadir' : 'Berhalangan'}
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex align-items-center">
+                            <h5 class="card-title mb-0 me-2">${ucapan.nama}</h5>
+                            <span class="${ucapan.hadiran === '1' ? 'text-success' : 'text-danger'}">
+                                <i class="bi ${ucapan.hadiran === '1' ? 'bi-check-circle-fill' : 'bi-x-circle-fill'}"></i>
                             </span>
                         </div>
-                        <p class="card-text">${ucapan.pesan}</p>
+                        <small class="text-muted">${ucapan.tanggal}</small>
                     </div>
-                `;
+                    <p class="card-text">${ucapan.pesan}</p>
+                </div>
+            `;
                 daftarucapan.appendChild(ucapanElement);
             });
         })
@@ -185,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // You can also iterate through the messages if needed
         snapshot.forEach((childSnapshot) => {
             const ucapan = childSnapshot.val();
-            if (ucapan.hadiran === '1') {
+            if (ucapan.hadiran === '1' && (ucapan.tipe == '1' || ucapan.tipe == '2' || ucapan.tipe == '3')) {
                 totalGuest +=  Number(ucapan.jumlahOrang);
             }
         });
