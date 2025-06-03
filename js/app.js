@@ -148,7 +148,7 @@ if (tipe) {
         document.getElementById("waktu-resepsi").textContent = "07.00 WIB - 08.30 WIB";
     } else if (tipe == '2' || tipe == '3') {
         document.getElementById("waktu-resepsi").textContent = "08.00 WIB - 9.30 WIB";
-    } else if (tipe == '4' || tipe == '5') {
+    } else if (tipe == '4' || tipe == '5'  || tipe == '6') {
         
         const element = document.getElementById('tampilan-waktu');
         if(tipe == '4') {
