@@ -157,10 +157,13 @@ if (tipe) {
         } else if(tipe == '5') {
             element.setAttribute('data-waktu', '2025-06-13 16:30:00');
             document.getElementById("jam-unduh").textContent = "12.30 WIB - 14.30 WIB";
+        } else if(tipe == '6') {
+            element.setAttribute('data-waktu', '2025-06-13 16:30:00');
+            document.getElementById("jam-unduh").textContent = "15.30 WIB - 17.30 WIB";
         }
 
         document.getElementById("tanggal-acara").textContent = "Jum'at, 13 Juni 2025";
-        document.getElementById("acara").textContent = "Ngunduh Mantu";
+        document.getElementById("acara").textContent = "Syukuran Pernikahan";
         document.getElementById("waktu-acara").hidden = true;
         document.getElementById("waktu-unduh").hidden = false;
 
